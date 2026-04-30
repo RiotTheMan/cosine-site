@@ -1,0 +1,66 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const studies = (await getCollection('caseStudies', (s) => s.data.featured && !s.data.draft))
+  .sort((a, b) => (a.data.publishedAt < b.data.publishedAt ? 1 : -1));
+---
+<Base>
+  <section class="max-w-3xl mx-auto px-6 pt-24 pb-16">
+    <h1 class="font-display text-5xl sm:text-6xl leading-[1.05] tracking-tight">
+      Memory that augments your AI coding harness — for development that's actually safer and easier.
+    </h1>
+    <p class="mt-8 text-lg measure" style="color: var(--ink-soft);">
+      Built it. Use it daily. Runs the knowledge store at a tech-driven bank.
+      CoSine takes the discipline behind it to non-developers, founders, and
+      small teams now shipping software with AI.
+    </p>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 py-12">
+    <p class="mono text-xs uppercase tracking-widest mb-3" style="color: var(--ink-soft);">Right now</p>
+    <p class="measure">
+      Hardening the memory layer under concurrent multi-team load. Shipping
+      Sosine — the first sibling in the CoSine product family. Coaching
+      non-developers on the dev practices that turn AI-generated code into
+      software that ships.
+    </p>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-6 py-16">
+    <div class="flex items-baseline justify-between mb-10">
+      <h2 class="font-display text-3xl">Selected work</h2>
+      <a href="/work" class="mono text-sm">All →</a>
+    </div>
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+      {studies.map((s) => (
+        <a href={`/work/${s.data.slug}`} class="block group">
+          <div class="aspect-[4/3] mb-4" style="background: var(--paper-2); border: 1px solid var(--rule);"></div>
+          <p class="mono text-xs" style="color: var(--ink-soft);">{s.data.status} · {s.data.period}</p>
+          <h3 class="font-display text-xl mt-1">{s.data.title}</h3>
+          <p class="mt-2 text-sm measure" style="color: var(--ink-soft);">{s.data.thesis}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 py-16 measure">
+    <h2 class="font-display text-3xl">Consulting</h2>
+    <p class="mt-4">
+      AI lets anyone code. Few people ship code that works. I help non-developers,
+      solo founders, and small teams cross that gap — through training, dev
+      workflow setup, and AI augmentation that earns its keep.
+    </p>
+    <p class="mt-6"><a href="/consulting" class="mono">Read more →</a></p>
+  </section>
+
+  <section id="contact" class="max-w-3xl mx-auto px-6 py-20 measure">
+    <h2 class="font-display text-3xl">Get in touch</h2>
+    <p class="mt-4">
+      Email me if this is your problem.
+    </p>
+    <p class="mt-4 mono">
+      <a href="mailto:hello@cosinehq.co.za">hello@cosinehq.co.za</a>
+    </p>
+  </section>
+</Base>

@@ -1,0 +1,61 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const studies = await getCollection('caseStudies', (s) => !s.data.draft);
+  return studies.map((entry) => ({
+    params: { slug: entry.data.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+<Base title={`${entry.data.title} — CoSine`} description={entry.data.thesis}>
+  <article class="max-w-2xl mx-auto px-6 pt-20 pb-24">
+    <p class="mono text-xs uppercase tracking-widest" style="color: var(--ink-soft);">
+      {entry.data.status} · {entry.data.period}
+    </p>
+    <h1 class="font-display text-5xl tracking-tight mt-3">{entry.data.title}</h1>
+    <p class="mt-6 text-xl measure" style="color: var(--ink-soft);">{entry.data.thesis}</p>
+
+    <div class="mono text-xs mt-6" style="color: var(--ink-soft);">
+      <span>Role: {entry.data.role}</span>
+      {entry.data.stack.length > 0 && (
+        <>
+          <span class="mx-2">·</span>
+          <span>{entry.data.stack.join(' / ')}</span>
+        </>
+      )}
+    </div>
+
+    <hr />
+
+    <div class="prose-cosine measure">
+      <Content />
+    </div>
+  </article>
+</Base>
+
+<style is:global>
+  .prose-cosine h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    margin: 2.5rem 0 1rem;
+  }
+  .prose-cosine h3 { font-family: var(--font-display); font-size: 1.2rem; margin: 2rem 0 0.75rem; }
+  .prose-cosine p { margin: 1rem 0; }
+  .prose-cosine ul { margin: 1rem 0; padding-left: 1.5rem; list-style: disc; }
+  .prose-cosine ul li { margin: 0.4rem 0; }
+  .prose-cosine blockquote {
+    margin: 2rem 0;
+    padding-left: 1rem;
+    border-left: 2px solid var(--ocean);
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+  }
+  .prose-cosine code { font-family: var(--font-mono); font-size: 0.9em; }
+</style>

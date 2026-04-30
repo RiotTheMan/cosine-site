@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+---
+<Base title="Consulting — CoSine" description="Dev discipline for non-developers shipping software with AI.">
+  <section class="max-w-2xl mx-auto px-6 pt-20 pb-12">
+    <h1 class="font-display text-5xl tracking-tight">Consulting</h1>
+    <p class="mt-6 text-lg measure" style="color: var(--ink-soft);">
+      AI lets anyone code. Few people ship code that works. I help non-developers,
+      solo founders, and small teams close that gap — without making you become a developer.
+    </p>
+  </section>
+
+  <section class="max-w-2xl mx-auto px-6 py-8">
+    <h2 class="font-display text-2xl mb-6">What I help with</h2>
+    <div class="space-y-10">
+      {services.map((s) => (
+        <div>
+          <h3 class="font-display text-xl">{s.data.title}</h3>
+          <p class="mt-2 measure" style="color: var(--ink-soft);">{s.data.summary}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="max-w-2xl mx-auto px-6 py-12">
+    <h2 class="font-display text-2xl mb-4">How I work</h2>
+    <p class="measure">
+      A short discovery sprint — one or two weeks, fixed price — to map the
+      system, surface what's missing, and write the build brief. Then a
+      fixed-scope engagement: four to eight weeks for builds, or a
+      training/coaching cadence for level-up work. No retainer, no hourly.
+      Remote, working from Europe and South Africa.
+    </p>
+  </section>
+
+  <section class="max-w-2xl mx-auto px-6 py-12">
+    <h2 class="font-display text-2xl mb-4">Talk</h2>
+    <p class="measure mb-6">
+      Email is fine. If a 15-minute intro is faster, book one.
+    </p>
+    <p class="mono">
+      <a href="mailto:hello@cosinehq.co.za">hello@cosinehq.co.za</a>
+      <span class="mx-3" style="color: var(--ink-soft);">·</span>
+      <a href="https://cal.com/emile/intro">Book 15 min →</a>
+    </p>
+  </section>
+</Base>

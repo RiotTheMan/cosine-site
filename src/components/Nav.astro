@@ -1,0 +1,24 @@
+---
+const path = Astro.url.pathname;
+const links = [
+  { href: '/work', label: 'Work' },
+  { href: '/consulting', label: 'Consulting' },
+  { href: '/about', label: 'About' },
+];
+---
+<header class="border-b" style="border-color: var(--rule);">
+  <nav class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
+    <a href="/" class="font-display text-xl tracking-tight" style="color: var(--ink);">CoSine</a>
+    <ul class="flex gap-7 text-sm">
+      {links.map(l => (
+        <li>
+          <a
+            href={l.href}
+            class="mono"
+            style={`color: ${path.startsWith(l.href) ? 'var(--ink)' : 'var(--ink-soft)'};`}
+          >{l.label}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
