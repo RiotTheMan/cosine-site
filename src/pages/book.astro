@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Book — CoSine" description="Book a 15-minute intro to talk through what you're building.">
+  <section class="max-w-3xl mx-auto px-6 pt-20 pb-8">
+    <h1 class="font-display text-5xl tracking-tight">Book a 15-minute intro</h1>
+    <p class="mt-6 text-lg measure" style="color: var(--ink-soft);">
+      Pick a slot that works. We'll talk through what you're building, what's
+      stuck, and whether I can help. No pitch, no pressure.
+    </p>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-6 pb-20">
+    <div id="cal-inline" style="width:100%; min-height:700px;"></div>
+  </section>
+
+  <p class="max-w-3xl mx-auto px-6 pb-16 measure mono text-sm" style="color: var(--ink-soft);">
+    Or email <a href="mailto:hello@cosinehq.co.za">hello@cosinehq.co.za</a> if a slot here doesn't fit.
+  </p>
+
+  <script is:inline>
+    (function (C, A, L) {
+      let p = function (a, ar) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal;
+        let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar);
+            p(cal, ["initNamespace", namespace]);
+          } else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    Cal("init", "intro15", { origin: "https://cal.com" });
+    Cal.ns.intro15("inline", {
+      elementOrSelector: "#cal-inline",
+      calLink: "emile-harel-w7rsd4/15min",
+      config: { layout: "month_view" }
+    });
+    Cal.ns.intro15("ui", {
+      theme: "light",
+      cssVarsPerTheme: {
+        light: { "cal-brand": "#2C5970" },
+        dark: { "cal-brand": "#7BA8BE" }
+      },
+      hideEventTypeDetails: false,
+      layout: "month_view"
+    });
+  </script>
+</Base>

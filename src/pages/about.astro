@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Triquetra from '../components/geometry/Triquetra.astro';
 ---
 <Base title="About — CoSine" description="The person behind CoSine.">
   <section class="max-w-2xl mx-auto px-6 pt-20 pb-10">
@@ -8,18 +9,18 @@ import Base from '../layouts/Base.astro';
 
   <section class="max-w-2xl mx-auto px-6 py-8 measure space-y-5">
     <p>
-      I'm Emile Harel. I run CoSine — a one-person practice that helps
-      non-developers, solo founders, and small teams ship reliable software
-      using AI.
+      I'm Emile Harel. Self-taught developer — manual labour → backend → AI R&D
+      in five years. CoSine is where I help people build software they understand.
+      The thing I'm best at isn't writing code. It's teaching people to teach
+      themselves, so the software they ship gets safer with every iteration.
     </p>
     <p>
-      Day job: AI Platform Engineer at Capitec. I build and run the memory
-      and tooling that has to survive real users at real scale. CoSine is
-      where I take that same discipline to the people now writing software
-      with AI — without making them become developers.
+      Day job: AI Platform Engineer at Capitec. I build and run the memory and
+      tooling that has to survive real users at real scale. CoSine is where I
+      bring that same discipline to people now building their own software —
+      business owners, small teams, solo founders.
     </p>
     <p>
-      The arc: manual labour → self-taught backend → AI R&D in five years.
       South African, currently in Austria.
     </p>
   </section>
@@ -27,6 +28,7 @@ import Base from '../layouts/Base.astro';
   <section class="max-w-2xl mx-auto px-6 py-8">
     <h2 class="font-display text-2xl mb-4">Right now</h2>
     <ul class="measure space-y-2 list-disc pl-5">
+      <li>Helping people define what they need and build the software that delivers it.</li>
       <li>Hardening a memory layer used in production at a tech-driven bank.</li>
       <li>Shipping Sosine — the first sibling in the CoSine product family.</li>
       <li>Music. Climbing. Running. Family.</li>
@@ -41,6 +43,10 @@ import Base from '../layouts/Base.astro';
       <p><strong class="font-display">Off-screen.</strong> The success metric is what happens when the screen is dark.</p>
     </div>
   </section>
+
+  <div class="flex justify-center py-12">
+    <Triquetra size={80} />
+  </div>
 
   <section class="max-w-2xl mx-auto px-6 py-12">
     <p class="mono">

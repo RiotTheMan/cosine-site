@@ -1,15 +1,18 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import GoldenSpiral from '../components/geometry/GoldenSpiral.astro';
 
 const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
 ---
-<Base title="Consulting — CoSine" description="Dev discipline for non-developers shipping software with AI.">
+<Base title="Consulting — CoSine" description="Software consulting for people who want to take control of the software they depend on.">
   <section class="max-w-2xl mx-auto px-6 pt-20 pb-12">
     <h1 class="font-display text-5xl tracking-tight">Consulting</h1>
     <p class="mt-6 text-lg measure" style="color: var(--ink-soft);">
-      AI lets anyone code. Few people ship code that works. I help non-developers,
-      solo founders, and small teams close that gap — without making you become a developer.
+      Software consulting for people who want to take control of the software
+      they depend on. AI is part of the toolkit. Discipline is the practice.
+      Three services, one premise: ship something reliable, ship something
+      safe, ship something you understand.
     </p>
   </section>
 
@@ -25,14 +28,18 @@ const services = (await getCollection('services')).sort((a, b) => a.data.order -
     </div>
   </section>
 
+  <div class="flex justify-center py-12">
+    <GoldenSpiral size={96} />
+  </div>
+
   <section class="max-w-2xl mx-auto px-6 py-12">
     <h2 class="font-display text-2xl mb-4">How I work</h2>
     <p class="measure">
-      A short discovery sprint — one or two weeks, fixed price — to map the
-      system, surface what's missing, and write the build brief. Then a
-      fixed-scope engagement: four to eight weeks for builds, or a
-      training/coaching cadence for level-up work. No retainer, no hourly.
-      Remote, working from Europe and South Africa.
+      A short discovery — one or two weeks, fixed price — to understand where
+      you are, what you need, and what success looks like. Then a fixed-scope
+      engagement that ships something — and teaches you how to keep shipping.
+      I'm a self-taught developer; what I teach is how to teach yourself.
+      No retainer, no hourly. You leave knowing more, with a system that holds.
     </p>
   </section>
 
@@ -44,7 +51,7 @@ const services = (await getCollection('services')).sort((a, b) => a.data.order -
     <p class="mono">
       <a href="mailto:hello@cosinehq.co.za">hello@cosinehq.co.za</a>
       <span class="mx-3" style="color: var(--ink-soft);">·</span>
-      <a href="https://cal.com/emile/intro">Book 15 min →</a>
+      <a href="/book">Book 15 min →</a>
     </p>
   </section>
 </Base>

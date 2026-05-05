@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import VesicaPiscis from '../components/geometry/VesicaPiscis.astro';
 
 const studies = (await getCollection('caseStudies', (s) => s.data.featured && !s.data.draft))
   .sort((a, b) => (a.data.publishedAt < b.data.publishedAt ? 1 : -1));
@@ -8,22 +9,22 @@ const studies = (await getCollection('caseStudies', (s) => s.data.featured && !s
 <Base>
   <section class="max-w-3xl mx-auto px-6 pt-24 pb-16">
     <h1 class="font-display text-5xl sm:text-6xl leading-[1.05] tracking-tight">
-      Memory that augments your AI coding harness — for development that's actually safer and easier.
+      Software consulting that teaches you to ship.
     </h1>
     <p class="mt-8 text-lg measure" style="color: var(--ink-soft);">
-      Built it. Use it daily. Runs the knowledge store at a tech-driven bank.
-      CoSine takes the discipline behind it to non-developers, founders, and
-      small teams now shipping software with AI.
+      Anyone can produce code now. Few ship something that holds. I'm a
+      self-taught developer turned consultant. I help business owners, small
+      teams, and solo founders build software they understand — with AI as a
+      multiplier, discipline as the bedrock.
     </p>
   </section>
 
   <section class="max-w-3xl mx-auto px-6 py-12">
     <p class="mono text-xs uppercase tracking-widest mb-3" style="color: var(--ink-soft);">Right now</p>
     <p class="measure">
-      Hardening the memory layer under concurrent multi-team load. Shipping
-      Sosine — the first sibling in the CoSine product family. Coaching
-      non-developers on the dev practices that turn AI-generated code into
-      software that ships.
+      Helping people define what they need and build the software that
+      delivers it. Hardening a memory layer used in production at a tech-driven
+      bank. Shipping Sosine — the first sibling in the CoSine product family.
     </p>
   </section>
 
@@ -35,7 +36,11 @@ const studies = (await getCollection('caseStudies', (s) => s.data.featured && !s
     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
       {studies.map((s) => (
         <a href={`/work/${s.data.slug}`} class="block group">
-          <div class="aspect-[4/3] mb-4" style="background: var(--paper-2); border: 1px solid var(--rule);"></div>
+          <div class="aspect-[2/1] mb-4 overflow-hidden" style="border: 1px solid var(--rule); background: var(--paper-2);">
+            {s.data.ogImage && (
+              <img src={s.data.ogImage} alt={s.data.title} class="w-full h-full object-cover" loading="lazy" />
+            )}
+          </div>
           <p class="mono text-xs" style="color: var(--ink-soft);">{s.data.status} · {s.data.period}</p>
           <h3 class="font-display text-xl mt-1">{s.data.title}</h3>
           <p class="mt-2 text-sm measure" style="color: var(--ink-soft);">{s.data.thesis}</p>
@@ -47,12 +52,17 @@ const studies = (await getCollection('caseStudies', (s) => s.data.featured && !s
   <section class="max-w-3xl mx-auto px-6 py-16 measure">
     <h2 class="font-display text-3xl">Consulting</h2>
     <p class="mt-4">
-      AI lets anyone code. Few people ship code that works. I help non-developers,
-      solo founders, and small teams cross that gap — through training, dev
-      workflow setup, and AI augmentation that earns its keep.
+      Software consulting for people who want to take control of the software
+      they depend on. AI is part of the toolkit. Discipline is the practice.
+      Three services, one premise: ship something reliable, ship something
+      safe, ship something you understand.
     </p>
     <p class="mt-6"><a href="/consulting" class="mono">Read more →</a></p>
   </section>
+
+  <div class="flex justify-center py-12">
+    <VesicaPiscis size={80} />
+  </div>
 
   <section id="contact" class="max-w-3xl mx-auto px-6 py-20 measure">
     <h2 class="font-display text-3xl">Get in touch</h2>

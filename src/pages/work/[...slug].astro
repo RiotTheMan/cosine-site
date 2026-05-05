@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 ---
-<Base title={`${entry.data.title} — CoSine`} description={entry.data.thesis}>
+<Base title={`${entry.data.title} — CoSine`} description={entry.data.thesis} ogImage={entry.data.ogImage ? new URL(entry.data.ogImage, Astro.site).toString() : undefined}>
   <article class="max-w-2xl mx-auto px-6 pt-20 pb-24">
     <p class="mono text-xs uppercase tracking-widest" style="color: var(--ink-soft);">
       {entry.data.status} · {entry.data.period}

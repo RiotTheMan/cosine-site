@@ -10,12 +10,15 @@ interface Props {
 }
 
 const {
-  title = 'CoSine — memory and agent infrastructure',
-  description = 'CoSine builds production memory and agent infrastructure for teams past the prototype phase. Sometimes for clients, sometimes for itself.',
-  ogImage,
+  title = 'CoSine — software consulting that teaches you to ship',
+  description = 'Software consulting for non-developers, solo founders, and small teams. AI is a multiplier; discipline is the bedrock.',
+  ogImage = '/og/cosine-site-social.png',
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImageAbsolute = ogImage
+  ? (ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astro.site).toString())
+  : undefined;
 ---
 <!doctype html>
 <html lang="en">
@@ -31,7 +34,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
-    {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImageAbsolute && <meta property="og:image" content={ogImageAbsolute} />}
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />

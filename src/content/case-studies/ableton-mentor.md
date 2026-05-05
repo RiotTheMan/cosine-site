@@ -8,6 +8,7 @@ stack: ["Python", "MCP", "Ableton LOM", "real-time DSP"]
 status: "Live"
 featured: true
 publishedAt: "2026-04-29"
+ogImage: "/og/ableton-mentor-mcp-social.png"
 ---
 
 ## The bet

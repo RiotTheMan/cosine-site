@@ -8,6 +8,7 @@ stack: ["Spring Boot", "Postgres", "PostGIS", "Vue 3", "Capacitor"]
 status: "In build"
 featured: true
 publishedAt: "2026-04-29"
+ogImage: "/og/social-sine-social.png"
 ---
 
 ## The bet

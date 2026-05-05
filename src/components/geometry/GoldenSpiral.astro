@@ -1,0 +1,29 @@
+---
+interface Props {
+  class?: string;
+  size?: number;
+}
+const { class: className = '', size = 80 } = Astro.props;
+---
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 100 62"
+  fill="none"
+  stroke="var(--ocean)"
+  stroke-width="1.25"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class:list={['mx-auto block opacity-70', className]}
+  aria-hidden="true"
+>
+  <path d="
+    M 96 3
+    A 55 55 0 0 1 41 58
+    A 34 34 0 0 1 7 24
+    A 21 21 0 0 1 28 3
+    A 13 13 0 0 1 41 16
+    A 8 8 0 0 1 33 24
+    A 5 5 0 0 1 28 19
+  " />
+</svg>

@@ -1,13 +1,14 @@
 ---
 title: "A memory layer for AI agents"
 slug: "memory-system"
-thesis: "Memory that augments AI coding tools — built for myself, now powering a knowledge store at a tech-driven bank."
+thesis: "Production-grade memory for AI coding tools — built for myself, now powering the knowledge store at a tech-driven bank."
 role: "Architect / implementer"
 period: "2025-11 → 2026-04"
 stack: ["Postgres", "pgvector", "Python", "MCP"]
 status: "In build"
 featured: true
 publishedAt: "2026-04-29"
+ogImage: "/og/cosine-site-social.png"
 ---
 
 ## The bet
