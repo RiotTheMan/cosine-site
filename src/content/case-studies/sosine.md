@@ -27,10 +27,6 @@ A social app where the product is the meet-up, not the scroll. People post publi
 - **DB-enforced admin guard.** Role changes require a session-set variable + trigger.
 - **AI as a teammate, not a replacement.** Every commit reviewed before it lands. The AI generates; I decide.
 
-## Artefact
-
-*Core-loop diagram — post intent → route → IRL meet-up.*
-
 ## What's next
 
 Phase 2 is the offline moment itself: arrival, identification, the "it happened" signal. The app should go quiet during the meetup window — that's the test of whether the design filter held.

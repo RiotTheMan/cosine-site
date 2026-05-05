@@ -25,10 +25,6 @@ A daemon that traverses the Ableton Live Object Model, analyses audio in real ti
 - **Reference-track memory.** Sessions remember the reference. New tracks evaluated against what the user said sounded right.
 - **Specific over generic.** Output is "EQ8 notch at 3.09 kHz" — not "the mid-range needs work." The system either has the data or stays silent.
 
-## Artefact
-
-*Three-thread daemon diagram + sample session-xray output.*
-
 ## What's next
 
 A larger reference corpus. Maybe a way to teach the system new genres without retraining. Built for me; shared because it's fun.

@@ -26,10 +26,6 @@ A memory layer that augments AI coding harnesses with persistent, retrievable co
 - **Session-set admin guard.** Authority changes require a session variable + trigger — not just a flag flip. Governance in miniature.
 - **97% size reduction** from prototype to production. Cleaner data model, smaller working set, no recall loss.
 
-## Artefact
-
-*Abstracted architecture diagram — boxes + arrows, no internal product names.*
-
 ## What's open
 
 How AI agents share memory without stepping on each other under sustained concurrent load. Still under active research.
