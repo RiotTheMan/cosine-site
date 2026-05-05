@@ -1,5 +1,5 @@
 ---
-title: "Sosine"
+title: "Social Sine"
 slug: "sosine"
 thesis: "Shipping a real product solo with AI augmentation — and the discipline that takes."
 role: "Founder / engineer"
