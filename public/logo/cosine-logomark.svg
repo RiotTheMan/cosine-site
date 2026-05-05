@@ -8,7 +8,7 @@
       <line x1="62" y1="53" x2="76" y2="53"/>
       <line x1="67" y1="38" x2="67" y2="53"/>
     </g>
-    <path d="M 96 3 A 55 55 0 0 1 41 58 A 34 34 0 0 1 7 24 A 21 21 0 0 1 28 3 A 13 13 0 0 1 41 16 A 8 8 0 0 1 33 24 A 5 5 0 0 0 28 19"
+    <path d="M 0 0 A 62 62 0 0 1 62 62 A 38 38 0 0 1 100 24 A 24 24 0 0 1 76 0 A 14 14 0 0 0 62 14 A 9 9 0 0 0 71 24"
           fill="none" stroke="#2C5970" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

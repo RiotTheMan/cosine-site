@@ -9,10 +9,4 @@
     <circle cx="720" cy="310" r="160"/>
     <line x1="640" y1="150" x2="640" y2="470" stroke="#2C5970" stroke-width="1" stroke-dasharray="2 4" opacity="0.45"/>
   </g>
-  <g font-family="'Iowan Old Style', 'Palatino', 'Georgia', serif" font-size="36" fill="#1A1817">
-    <text x="1044" y="580">co</text>
-    <text x="1130" y="580">sine</text>
-  </g>
-  <path d="M 1086 568 C 1092.67 568 1099.33 559 1106 559 C 1112.67 559 1119.33 577 1126 577"
-        fill="none" stroke="#1A1817" stroke-width="1.25" stroke-linecap="round"/>
 </svg>

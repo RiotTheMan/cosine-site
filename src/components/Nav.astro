@@ -8,14 +8,19 @@ const links = [
 ---
 <header class="border-b" style="border-color: var(--rule);">
   <nav class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
-    <a href="/" class="font-display text-xl tracking-tight" style="color: var(--ink);">CoSine</a>
+    <a href="/" class="relative inline-flex items-center font-display text-xl tracking-tight" style="color: var(--ink);">
+      <span class="relative inline-block px-3 py-1">
+        <img src="/logo/cosine-logomark.svg" alt="" class="absolute left-1/2 top-1/2 h-12 w-auto pointer-events-none opacity-35" style="transform: translate(-50%, -50%);" aria-hidden="true" />
+        <span class="relative">CoSine</span>
+      </span>
+    </a>
     <ul class="flex gap-7 text-sm">
       {links.map(l => (
         <li>
           <a
             href={l.href}
             class="mono"
-            style={`color: ${path.startsWith(l.href) ? 'var(--ink)' : 'var(--ink-soft)'};`}
+            style={`color: ${path.startsWith(l.href) ? 'var(--ink)' : 'var(--ink-soft)'}; ${path.startsWith(l.href) ? 'border-bottom: 1px solid var(--green); padding-bottom: 2px;' : ''}`}
           >{l.label}</a>
         </li>
       ))}

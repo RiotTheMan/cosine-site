@@ -10,6 +10,11 @@
   --ocean:    #2C5970;
   --rule:     #E0DACE;
 
+  --green:      #7A9A82;
+  --green-soft: #B8CDB9;
+  --green-deep: #547061;
+  --green-fade: #F7F4EE;
+
   --font-display: "Fraunces", ui-serif, Georgia, serif;
   --font-body:    "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
@@ -22,6 +27,11 @@
   --ink-soft: #B5AFA2;
   --ocean:    #7BA8BE;
   --rule:     #2D2A28;
+
+  --green:      #8FB098;
+  --green-soft: #5E7A65;
+  --green-deep: #B8CDB9;
+  --green-fade: #1A1817;
 }
 
 html, body { background: var(--paper); color: var(--ink); font-family: var(--font-body); }
@@ -37,3 +47,26 @@ a { color: var(--ocean); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 3px; }
 hr { border: 0; border-top: 1px solid var(--rule); margin: 3rem 0; }
 .measure { max-width: 66ch; }
+
+.accent-green { color: var(--green); }
+
+.fade-green {
+  color: var(--green);
+  background-image: linear-gradient(
+    90deg,
+    var(--green-deep) 0%,
+    var(--green) 55%,
+    var(--green-soft) 90%,
+    var(--green-fade) 100%
+  );
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .fade-green {
+    background-image: none;
+    color: var(--green);
+    -webkit-text-fill-color: currentColor;
+  }
+}
