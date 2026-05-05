@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 80" width="220" height="80">
+  <g transform="translate(10, 0)">
+    <text x="0" y="55" font-family="'Iowan Old Style', 'Palatino', 'Georgia', serif" font-size="38" fill="#1A1817">co</text>
+    <path d="M 44 55 C 47.5 55, 47 48, 50.5 48 C 54 48, 53.5 55, 57 55 C 60.5 55, 60 62, 63.5 62 C 67 62, 66.5 55, 70 55"
+          fill="none" stroke="#1A1817" stroke-width="1.6" stroke-linecap="round"/>
+    <text x="76" y="55" font-family="'Iowan Old Style', 'Palatino', 'Georgia', serif" font-size="38" fill="#1A1817">sine</text>
+  </g>
+</svg>
