@@ -1,43 +1,52 @@
-# Astro Starter Kit: Minimal
+# cosine-site
 
-```sh
-npm create astro@latest -- --template minimal
+Source for [cosinehq.co.za](https://cosinehq.co.za) — CoSine, a one-person software-consulting practice.
+
+## Stack
+
+- Astro 6 + Tailwind v4 (`@tailwindcss/vite` plugin)
+- Content collections (loader API) — markdown for case studies + services
+- Cloudflare Pages (Direct Upload mode)
+
+## Develop
+
+```bash
+npm install
+npm run dev          # → http://localhost:4321
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Build
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm run build        # → dist/
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Deploy
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```bash
+CLOUDFLARE_API_TOKEN=<token> CLOUDFLARE_ACCOUNT_ID=<account-id> \
+  npx wrangler pages deploy dist --project-name=cosine-site --branch=main --commit-dirty=true
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+Token scope: **Account → Cloudflare Pages → Edit** (only).
 
-## 🧞 Commands
+## Layout
 
-All commands are run from the root of the project, from a terminal:
+```
+src/
+  pages/                  routes (index, work, consulting, about, book, 404)
+  layouts/Base.astro      head, JSON-LD, OG meta
+  components/             Nav, Footer, geometry SVGs
+  content/                case-studies, services (markdown)
+  styles/global.css       tokens (paper, ink, ocean, green) + utilities
+public/
+  logo/                   brand marks
+  og/                     Open Graph cards (per page)
+  patterns/               background patterns
+  hero/                   homepage hero composition
+  _headers                Cloudflare Pages headers (HSTS, CSP, etc.)
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## License
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+All rights reserved. © Emile Harel.
