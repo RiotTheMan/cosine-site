@@ -1,0 +1,76 @@
+---
+import Base from '../layouts/Base.astro';
+import VesicaPiscis from '../components/geometry/VesicaPiscis.astro';
+
+const deliverables = [
+  { name: 'Data integration',     desc: 'Lakes, warehouses, system-of-record silos — connected into the knowledge store with the governance boundaries intact.' },
+  { name: 'Retrieval that scales', desc: 'Vector + structured retrieval tuned to your domain. Latency, cost, and recall measured, not assumed.' },
+  { name: 'Governance + audit',   desc: 'Who saw what, what was rejected, what was used. Append-only logs. Compliance has a story to tell.' },
+  { name: 'Federated harness',    desc: "Each team's harness reads from the shared store. Local patterns layered on the company's. Drift becomes legible." },
+];
+---
+<Base title="Unlock your stack — CoSine" description="Data lakes and silos configured into a unified knowledge store. Federated harness, governed retrieval, audit-grade lineage.">
+  <section class="max-w-3xl mx-auto px-6 pt-20 pb-10">
+    <p class="mono text-xs uppercase tracking-widest mb-6" style="color: var(--ink-soft);">§04 · For enterprise architecture</p>
+    <h1 class="font-display text-5xl sm:text-6xl leading-[1.05] tracking-tight">
+      Unlock your codebase and data <span class="fade-green">for your AI tools</span>.
+    </h1>
+    <p class="mt-8 text-lg measure" style="color: var(--ink-soft);">
+      The knowledge is already in the company. It's in the lakes, the silos, the system-of-record databases, the runbooks in the wiki nobody updated. Your teams' AI tools can't see most of it.
+    </p>
+    <p class="mt-6 text-lg measure" style="color: var(--ink-soft);">
+      We configure the integrations. The shared knowledge store reaches into the systems that hold the truth, retrieval is tuned to your domain, and every team's harness reads from it with the governance boundaries your compliance group needs intact.
+    </p>
+  </section>
+
+  <hr class="max-w-3xl" style="border-top: 1px solid var(--rule); margin: 2rem auto 0;" />
+
+  <section class="max-w-3xl mx-auto px-6 py-20">
+    <p class="mono text-xs uppercase tracking-widest mb-8" style="color: var(--ink-soft);">What you get</p>
+    <ol class="border-t" style="border-color: var(--rule);">
+      {deliverables.map((d, i) => (
+        <li class="border-b py-7 grid grid-cols-12 gap-4 items-baseline" style="border-color: var(--rule);">
+          <span class="col-span-2 sm:col-span-1 mono text-xs" style="color: var(--ink-soft);">0{i + 1}</span>
+          <div class="col-span-10 sm:col-span-4">
+            <h3 class="font-display text-xl tracking-tight">{d.name}</h3>
+          </div>
+          <p class="col-span-12 sm:col-span-7 text-sm leading-relaxed" style="color: var(--ink-soft);">{d.desc}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 py-12 measure">
+    <h2 class="font-display text-2xl tracking-tight mb-4">How it works</h2>
+    <p>
+      Starts as an architecture engagement: we map your data estate, retrieval needs, and compliance perimeter. Output is a deployable plan — integration map, retrieval contract, harness federation model. Build follows in phases, scoped per system. Tier-3 work assumes the tier-2 patterns are already in place — knowledge store, approved-pattern library, FDE training — or that we'll stand them up alongside.
+    </p>
+  </section>
+
+  <div class="flex justify-center py-12">
+    <VesicaPiscis size={96} />
+  </div>
+
+  <section class="max-w-3xl mx-auto px-6 py-12">
+    <div class="grid sm:grid-cols-2 gap-8 border-t border-b py-10" style="border-color: var(--rule);">
+      <div>
+        <p class="mono text-xs uppercase tracking-widest mb-3" style="color: var(--ink-soft);">← Simpler version</p>
+        <a href="/your-engineers-ship" class="font-display text-xl tracking-tight">Engineers ship →</a>
+      </div>
+      <div>
+        <p class="mono text-xs uppercase tracking-widest mb-3" style="color: var(--ink-soft);">Outgrowing this? →</p>
+        <p class="text-sm" style="color: var(--ink-soft);">This is the deepest tier. We compose with your platform team from here.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 py-16 measure">
+    <h2 class="font-display text-2xl tracking-tight mb-4">Talk</h2>
+    <p class="mb-6">Architecture call first. We won't quote without understanding your data estate.</p>
+    <p class="mono">
+      <a href="mailto:hello@cosinehq.co.za">hello@cosinehq.co.za</a>
+      <span class="mx-3" style="color: var(--ink-soft);">·</span>
+      <a href="/#talk">Use the form →</a>
+    </p>
+  </section>
+</Base>

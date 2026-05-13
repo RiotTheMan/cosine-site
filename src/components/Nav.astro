@@ -1,10 +1,20 @@
 ---
 const path = Astro.url.pathname;
+
+const tiers = [
+  { href: '/build-the-thing',     label: 'Build the thing',     register: 'Individuals' },
+  { href: '/run-your-business',   label: 'Run your business',   register: 'Solo business' },
+  { href: '/your-engineers-ship', label: 'Engineers ship',      register: 'Engineering teams' },
+  { href: '/unlock-your-stack',   label: 'Unlock your stack',   register: 'Enterprise' },
+];
+
 const links = [
   { href: '/work', label: 'Work' },
-  { href: '/consulting', label: 'Consulting' },
+  { href: '/consulting', label: 'How I work' },
   { href: '/about', label: 'About' },
 ];
+
+const inTier = tiers.some(t => path.startsWith(t.href));
 ---
 <header class="border-b" style="border-color: var(--rule);">
   <nav class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
@@ -14,16 +24,101 @@ const links = [
         <span class="relative">CoSine</span>
       </span>
     </a>
-    <ul class="flex gap-7 text-sm">
+    <ul class="flex gap-7 text-sm items-center">
+
+      <li class="nav-dropdown relative">
+        <button type="button" class="mono nav-trigger inline-flex items-center gap-1" aria-haspopup="true" aria-expanded="false" style={`color: ${inTier ? 'var(--ink)' : 'var(--ink-soft)'};`}>
+          Services
+          <span class="nav-caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="nav-menu" role="menu">
+          <ul class="py-2">
+            {tiers.map(t => (
+              <li>
+                <a href={t.href} role="menuitem" class="block px-4 py-3 nav-menu-item" style={`color: ${path.startsWith(t.href) ? 'var(--ink)' : 'var(--ink)'};`}>
+                  <span class="mono text-[10px] uppercase tracking-widest block mb-0.5" style="color: var(--ink-soft);">{t.register}</span>
+                  <span class="font-display text-base tracking-tight">{t.label}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </li>
+
       {links.map(l => (
         <li>
           <a
             href={l.href}
             class="mono"
-            style={`color: ${path.startsWith(l.href) ? 'var(--ink)' : 'var(--ink-soft)'}; ${path.startsWith(l.href) ? 'border-bottom: 1px solid var(--green); padding-bottom: 2px;' : ''}`}
+            style={`color: ${path.startsWith(l.href) && l.href !== '/' ? 'var(--ink)' : 'var(--ink-soft)'}; ${path.startsWith(l.href) && l.href !== '/' ? 'border-bottom: 1px solid var(--green); padding-bottom: 2px;' : ''}`}
           >{l.label}</a>
         </li>
       ))}
     </ul>
   </nav>
 </header>
+
+<style>
+  .nav-trigger {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
+    line-height: 1;
+  }
+  .nav-caret {
+    font-size: 9px;
+    transform: translateY(1px);
+    transition: transform 150ms ease;
+  }
+  .nav-dropdown[data-open="true"] .nav-caret { transform: translateY(1px) rotate(180deg); }
+  .nav-menu {
+    position: absolute;
+    top: calc(100% + 14px);
+    right: 0;
+    min-width: 260px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-4px);
+    transition: opacity 160ms ease, transform 160ms ease;
+    z-index: 50;
+  }
+  .nav-dropdown[data-open="true"] .nav-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  .nav-menu-item { transition: background 120ms ease; }
+  .nav-menu-item:hover { background: var(--paper-2); }
+</style>
+
+<script is:inline>
+  (function () {
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+    dropdowns.forEach((dd) => {
+      const trigger = dd.querySelector('.nav-trigger');
+      const open = (v) => {
+        dd.setAttribute('data-open', String(v));
+        trigger?.setAttribute('aria-expanded', String(v));
+      };
+      let hoverTimer;
+      dd.addEventListener('mouseenter', () => { clearTimeout(hoverTimer); open(true); });
+      dd.addEventListener('mouseleave', () => { hoverTimer = setTimeout(() => open(false), 120); });
+      trigger?.addEventListener('click', (e) => {
+        e.preventDefault();
+        open(dd.getAttribute('data-open') !== 'true');
+      });
+      trigger?.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') open(false);
+      });
+    });
+    document.addEventListener('click', (e) => {
+      dropdowns.forEach((dd) => {
+        if (!dd.contains(e.target)) dd.setAttribute('data-open', 'false');
+      });
+    });
+  })();
+</script>
