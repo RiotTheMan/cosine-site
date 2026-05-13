@@ -5,36 +5,123 @@ import VesicaPiscis from '../components/geometry/VesicaPiscis.astro';
 
 const studies = (await getCollection('caseStudies', (s) => s.data.featured && !s.data.draft))
   .sort((a, b) => (a.data.publishedAt < b.data.publishedAt ? 1 : -1));
+
+const tiers = [
+  {
+    no: '§01',
+    href: '/build-the-thing',
+    headline: "Build the thing you've been trying to vibe-code.",
+    sub: 'Portfolios, automation, research. We define what you actually want, then equip your harness with the precedents to steer the model into delivering it.',
+    register: 'For individuals',
+  },
+  {
+    no: '§02',
+    href: '/run-your-business',
+    headline: 'Run your business on software you trust.',
+    sub: 'A capable harness, deployable code, maintenance you understand. The system that runs your business shouldn’t be the thing that owns you.',
+    register: 'For solo business owners',
+  },
+  {
+    no: '§03',
+    href: '/your-engineers-ship',
+    headline: 'Make your engineers ship AI-assisted code that holds.',
+    sub: 'FDE training for your team, a scalable knowledge store, and the approved-pattern library that lets the model generate deterministically.',
+    register: 'For engineering teams',
+  },
+  {
+    no: '§04',
+    href: '/unlock-your-stack',
+    headline: 'Unlock your codebase and data for your AI tools.',
+    sub: 'Data lakes, silos, governance. We configure the integrations so your knowledge store reaches everything your teams need to leverage it.',
+    register: 'For enterprise architecture',
+  },
+];
+
+const stack = [
+  { name: 'Memory',          desc: 'Atoms of decision, correction, precedent. Append-only. Searchable.' },
+  { name: 'Precedents',      desc: 'Rejected paths and confirmed patterns retrieved by relevance.' },
+  { name: 'Harness',         desc: 'The runtime around the model. Hooks, gates, recovery.' },
+  { name: 'Knowledge Store', desc: 'Company-wide. Patterns, procedures, lore — queryable by humans and LLMs alike.' },
+];
 ---
-<Base>
-  <section class="max-w-3xl mx-auto px-6 pt-12 pb-4">
+<Base title="CoSine — Ship code your LLM can't ship alone" description="We encode how you build into the harness around the model. What gets generated stays reliable, maintainable, on-pattern.">
+
+  <!-- HERO -->
+  <section class="max-w-3xl mx-auto px-6 pt-10 pb-2">
     <img src="/hero/cosine-hero.svg" alt="" class="w-full h-auto" style="max-height: 200px;" />
   </section>
 
-  <section class="max-w-3xl mx-auto px-6 pt-6 pb-16">
-    <h1 class="font-display text-5xl sm:text-6xl leading-[1.05] tracking-tight">
-      Software consulting that teaches you to <span class="fade-green">ship</span>.
+  <section class="max-w-3xl mx-auto px-6 pt-6 pb-12">
+    <p class="mono text-xs uppercase tracking-widest mb-6" style="color: var(--ink-soft);">CoSine · Software that holds</p>
+    <h1 class="font-display text-5xl sm:text-6xl leading-[1.04] tracking-tight">
+      Ship code your LLM <span class="fade-green">can't ship alone.</span>
     </h1>
     <p class="mt-8 text-lg measure" style="color: var(--ink-soft);">
-      Anyone can produce code now. Few ship something that holds. I'm a
-      self-taught developer turned consultant. I help business owners, small
-      teams, and solo founders build software they understand — with AI as a
-      multiplier, discipline as the bedrock.
+      We encode the way you build into the harness around the model. What gets generated stays reliable, maintainable, on-pattern.
+    </p>
+    <p class="mt-10 mono text-sm">
+      <a href="#system">Read the approach →</a>
+      <span class="mx-3" style="color: var(--ink-soft);">·</span>
+      <a href="#talk">Talk</a>
     </p>
   </section>
 
-  <section class="max-w-3xl mx-auto px-6 py-12">
-    <p class="mono text-xs uppercase tracking-widest mb-3" style="color: var(--ink-soft);">Right now</p>
-    <p class="measure">
-      Helping people define what they need and build the software that
-      delivers it. Hardening a memory layer used in production at a tech-driven
-      bank. Shipping Social Sine — the first sibling in the CoSine product family.
-    </p>
+  <hr class="max-w-3xl" style="border-top: 1px solid var(--rule); margin: 2rem auto 0;" />
+
+  <!-- PROBLEM MIRROR -->
+  <section class="max-w-3xl mx-auto px-6 py-20">
+    <p class="mono text-xs uppercase tracking-widest mb-8" style="color: var(--ink-soft);">§01 · The problem</p>
+    <div class="space-y-5 font-display text-2xl sm:text-3xl leading-snug tracking-tight">
+      <p>Vibe-coded systems break in production.</p>
+      <p style="color: var(--ink-soft);">Patterns drift between every prompt, every engineer.</p>
+      <p style="color: var(--ink-soft);">The knowledge that would have prevented either lives in someone's head.</p>
+    </div>
   </section>
 
-  <section class="max-w-5xl mx-auto px-6 py-16">
+  <hr class="max-w-3xl" style="border-top: 1px solid var(--rule); margin: 0 auto;" />
+
+  <!-- SYSTEM -->
+  <section id="system" class="max-w-3xl mx-auto px-6 py-20">
+    <p class="mono text-xs uppercase tracking-widest mb-8" style="color: var(--ink-soft);">§02 · The system</p>
+    <h2 class="font-display text-3xl sm:text-4xl tracking-tight mb-2">One stack. Composes up.</h2>
+    <p class="text-base mb-12 measure" style="color: var(--ink-soft);">The technical layers. Same primitives at every tier — more of them as the work scales. The discovery that decides <em>what</em> to build sits earlier, in the engagement, not the stack.</p>
+    <ol class="border-t" style="border-color: var(--rule);">
+      {stack.map((l, i) => (
+        <li class="border-b py-7 grid grid-cols-12 gap-4 items-baseline" style="border-color: var(--rule);">
+          <span class="col-span-2 sm:col-span-1 mono text-xs" style="color: var(--ink-soft);">0{i + 1}</span>
+          <div class="col-span-10 sm:col-span-4">
+            <h3 class="font-display text-xl tracking-tight">{l.name}</h3>
+          </div>
+          <p class="col-span-12 sm:col-span-7 text-sm leading-relaxed" style="color: var(--ink-soft);">{l.desc}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <hr class="max-w-3xl" style="border-top: 1px solid var(--rule); margin: 0 auto;" />
+
+  <!-- TIER SHELF -->
+  <section class="max-w-5xl mx-auto px-6 py-20">
+    <p class="mono text-xs uppercase tracking-widest mb-10" style="color: var(--ink-soft);">§03 · For…</p>
+    <div class="grid md:grid-cols-2 gap-x-14 gap-y-16">
+      {tiers.map(t => (
+        <a href={t.href} class="block group tier-card">
+          <p class="mono text-xs mb-3" style="color: var(--ink-soft);">{t.no} · {t.register}</p>
+          <h3 class="font-display text-2xl leading-snug tracking-tight tier-headline">{t.headline}</h3>
+          <p class="mt-4 text-sm leading-relaxed" style="color: var(--ink-soft);">{t.sub}</p>
+          <p class="mt-5 mono text-sm tier-arrow">→ explore</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <hr class="max-w-3xl" style="border-top: 1px solid var(--rule); margin: 0 auto;" />
+
+  <!-- PROOF -->
+  <section class="max-w-5xl mx-auto px-6 py-20">
+    <p class="mono text-xs uppercase tracking-widest mb-10" style="color: var(--ink-soft);">§04 · Proof</p>
     <div class="flex items-baseline justify-between mb-10">
-      <h2 class="font-display text-3xl">Selected work</h2>
+      <h2 class="font-display text-3xl tracking-tight">Selected work</h2>
       <a href="/work" class="mono text-sm">All →</a>
     </div>
     <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
@@ -46,35 +133,101 @@ const studies = (await getCollection('caseStudies', (s) => s.data.featured && !s
             )}
           </div>
           <p class="mono text-xs" style="color: var(--ink-soft);">{s.data.status} · {s.data.period}</p>
-          <h3 class="font-display text-xl mt-1">{s.data.title}</h3>
+          <h3 class="font-display text-xl mt-1 tracking-tight">{s.data.title}</h3>
           <p class="mt-2 text-sm measure" style="color: var(--ink-soft);">{s.data.thesis}</p>
         </a>
       ))}
     </div>
   </section>
 
-  <section class="max-w-3xl mx-auto px-6 py-16 measure">
-    <h2 class="font-display text-3xl">Consulting</h2>
-    <p class="mt-4">
-      Software consulting for people who want to take control of the software
-      they depend on. AI is part of the toolkit. Discipline is the practice.
-      Three services, one premise: ship something reliable, ship something
-      safe, ship something you understand.
-    </p>
-    <p class="mt-6"><a href="/consulting" class="mono">Read more →</a></p>
+  <hr class="max-w-3xl" style="border-top: 1px solid var(--rule); margin: 0 auto;" />
+
+  <!-- BOTTOM CTA — ROUTING FORM -->
+  <section id="talk" class="max-w-3xl mx-auto px-6 py-24">
+    <p class="mono text-xs uppercase tracking-widest mb-8" style="color: var(--ink-soft);">§05 · Start</p>
+    <h2 class="font-display text-4xl tracking-tight mb-3">What are you building?</h2>
+    <p class="text-lg mb-12" style="color: var(--ink-soft);">A sentence is enough. We'll route you from there.</p>
+    <form id="routing-form" class="space-y-7" novalidate>
+      <div>
+        <label class="mono text-xs uppercase tracking-widest block mb-2" for="building" style="color: var(--ink-soft);">In a sentence</label>
+        <textarea id="building" name="building" rows="3" required class="w-full p-3 mono text-sm form-field" placeholder="I'm trying to…"></textarea>
+      </div>
+      <div>
+        <label class="mono text-xs uppercase tracking-widest block mb-2" for="email" style="color: var(--ink-soft);">Email</label>
+        <input id="email" name="email" type="email" required autocomplete="email" class="w-full p-3 mono text-sm form-field" placeholder="you@…" />
+      </div>
+      <!-- honeypot -->
+      <div aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;">
+        <label for="hp">Leave blank</label>
+        <input id="hp" name="hp" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+      <div class="flex items-center gap-5">
+        <button id="routing-send" type="submit" class="mono text-sm py-3 px-7 send-btn">Find a slot →</button>
+        <span id="routing-status" class="mono text-xs" style="color: var(--ink-soft);"></span>
+      </div>
+    </form>
   </section>
 
-  <div class="flex justify-center py-12">
-    <VesicaPiscis size={80} />
+  <div class="flex justify-center pb-16">
+    <VesicaPiscis size={64} />
   </div>
 
-  <section id="contact" class="max-w-3xl mx-auto px-6 py-20 measure">
-    <h2 class="font-display text-3xl">Get in touch</h2>
-    <p class="mt-4">
-      Email me if this is your problem.
-    </p>
-    <p class="mt-4 mono">
-      <a href="mailto:hello@cosinehq.co.za">hello@cosinehq.co.za</a>
-    </p>
-  </section>
 </Base>
+
+<style is:global>
+  .tier-card { padding: 0.25rem 0; }
+  .tier-headline { transition: color 200ms ease; }
+  .tier-card:hover .tier-headline { color: var(--green-deep); }
+  .tier-arrow { transition: transform 200ms ease, color 200ms ease; display: inline-block; }
+  .tier-card:hover .tier-arrow { transform: translateX(4px); color: var(--ink); }
+
+  .form-field {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 150ms ease;
+  }
+  .form-field:focus { border-color: var(--green); }
+  textarea.form-field { resize: vertical; min-height: 5rem; line-height: 1.5; }
+
+  .send-btn {
+    background: var(--ink);
+    color: var(--paper);
+    border: 1px solid var(--ink);
+    cursor: pointer;
+    transition: background 150ms ease, color 150ms ease;
+  }
+  .send-btn:hover { background: var(--paper); color: var(--ink); }
+</style>
+
+<script is:inline>
+  (function () {
+    const CAL_BOOKER = 'https://cal.com/emile-harel-w7rsd4/15min';
+
+    const form = document.getElementById('routing-form');
+    const send = document.getElementById('routing-send');
+    const status = document.getElementById('routing-status');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const building = form.elements['building']?.value?.trim() || '';
+      const email    = form.elements['email']?.value?.trim() || '';
+      const hp       = form.elements['hp']?.value || '';
+
+      if (hp) return;
+      if (!building) { status.textContent = 'Tell us what you’re building.'; return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { status.textContent = 'Email looks off.'; return; }
+
+      send.setAttribute('disabled', 'true');
+      send.textContent = 'Opening Cal…';
+      status.textContent = '';
+
+      const params = new URLSearchParams({ email, notes: building });
+      window.location.href = CAL_BOOKER + '?' + params.toString();
+    });
+  })();
+</script>
+

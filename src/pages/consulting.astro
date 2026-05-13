@@ -1,57 +1,93 @@
 ---
 import Base from '../layouts/Base.astro';
-import { getCollection } from 'astro:content';
 import GoldenSpiral from '../components/geometry/GoldenSpiral.astro';
 
-const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const tiers = [
+  { href: '/build-the-thing',     register: 'For individuals',           label: 'Build the thing' },
+  { href: '/run-your-business',   register: 'For solo business owners',  label: 'Run your business' },
+  { href: '/your-engineers-ship', register: 'For engineering teams',     label: 'Make your engineers ship' },
+  { href: '/unlock-your-stack',   register: 'For enterprise',            label: 'Unlock your stack' },
+];
+
+const principles = [
+  { name: 'Discovery first',     desc: 'A short, fixed-price engagement to understand where you are, what you need, what success looks like. No quote without it.' },
+  { name: 'Fixed scope, no retainer', desc: 'No hourly billing. No open-ended retainers. A scoped engagement that ships a thing — and the literacy to keep it shipping.' },
+  { name: 'You leave the principal user', desc: 'Whatever we build, you understand. The harness is yours, the patterns are documented, the deploy is something you can do alone.' },
+  { name: 'AI as multiplier, discipline as bedrock', desc: 'The model produces output. The harness around it makes that output safe to ship. Both matter; neither is enough.' },
+];
 ---
-<Base title="Consulting — CoSine" description="Software consulting for people who want to take control of the software they depend on.">
-  <section class="max-w-2xl mx-auto px-6 pt-20 pb-12">
-    <h1 class="font-display text-5xl tracking-tight">Consulting</h1>
-    <p class="mt-6 text-lg measure" style="color: var(--ink-soft);">
-      Software consulting for people who want to take control of the software
-      they depend on. AI is part of the toolkit. Discipline is the practice.
-      Three services, one premise: ship something reliable, ship something
-      safe, ship something <span class="fade-green">you understand</span>.
+<Base title="How I work — CoSine" description="The consulting method common to every engagement: discovery first, fixed scope, no retainer, you leave the principal user.">
+  <section class="max-w-3xl mx-auto px-6 pt-20 pb-12">
+    <p class="mono text-xs uppercase tracking-widest mb-6" style="color: var(--ink-soft);">How I work</p>
+    <h1 class="font-display text-5xl sm:text-6xl leading-[1.04] tracking-tight">
+      One method. <span class="fade-green">Four scopes</span>.
+    </h1>
+    <p class="mt-8 text-lg measure" style="color: var(--ink-soft);">
+      The consulting practice is the same at every tier — what changes is the scale. Whether you're a single person trying to ship the thing, or an enterprise team configuring data lakes, the discipline is identical. The deliverable adapts.
     </p>
   </section>
 
-  <section class="max-w-2xl mx-auto px-6 py-8">
-    <h2 class="font-display text-2xl mb-6">What I help with</h2>
-    <div class="space-y-10">
-      {services.map((s) => (
-        <div>
-          <h3 class="font-display text-xl">{s.data.title}</h3>
-          <p class="mt-2 measure" style="color: var(--ink-soft);">{s.data.summary}</p>
-        </div>
+  <hr class="max-w-3xl" style="border-top: 1px solid var(--rule); margin: 2rem auto 0;" />
+
+  <section class="max-w-3xl mx-auto px-6 py-20">
+    <p class="mono text-xs uppercase tracking-widest mb-8" style="color: var(--ink-soft);">§01 · The method</p>
+    <ol class="border-t" style="border-color: var(--rule);">
+      {principles.map((p, i) => (
+        <li class="border-b py-7 grid grid-cols-12 gap-4 items-baseline" style="border-color: var(--rule);">
+          <span class="col-span-2 sm:col-span-1 mono text-xs" style="color: var(--ink-soft);">0{i + 1}</span>
+          <div class="col-span-10 sm:col-span-4">
+            <h3 class="font-display text-xl tracking-tight">{p.name}</h3>
+          </div>
+          <p class="col-span-12 sm:col-span-7 text-sm leading-relaxed" style="color: var(--ink-soft);">{p.desc}</p>
+        </li>
       ))}
-    </div>
+    </ol>
+  </section>
+
+  <section class="max-w-3xl mx-auto px-6 py-12 measure">
+    <h2 class="font-display text-2xl tracking-tight mb-4">The shape of a typical engagement</h2>
+    <p>
+      A one- to four-week discovery, fixed price. Output is a written scope, an architecture sketch, and a price for the build. If the build doesn't fit your business — we stop there and you keep the artefact. If it does, we ship in a fixed-scope engagement. You leave with the system, the literacy, and the precedents your harness needs to keep producing.
+    </p>
   </section>
 
   <div class="flex justify-center py-12">
     <GoldenSpiral size={96} />
   </div>
 
-  <section class="max-w-2xl mx-auto px-6 py-12">
-    <h2 class="font-display text-2xl mb-4">How I work</h2>
-    <p class="measure">
-      A short discovery — one or two weeks, fixed price — to understand where
-      you are, what you need, and what success looks like. Then a fixed-scope
-      engagement that ships something — and teaches you how to keep shipping.
-      I'm a self-taught developer; what I teach is how to teach yourself.
-      No retainer, no hourly. You leave knowing more, with a system that holds.
-    </p>
+  <section class="max-w-3xl mx-auto px-6 py-12">
+    <p class="mono text-xs uppercase tracking-widest mb-8" style="color: var(--ink-soft);">§02 · Pick your scope</p>
+    <ul class="border-t" style="border-color: var(--rule);">
+      {tiers.map(t => (
+        <li class="border-b" style="border-color: var(--rule);">
+          <a href={t.href} class="block py-6 group tier-row">
+            <div class="grid grid-cols-12 gap-4 items-baseline">
+              <span class="col-span-12 sm:col-span-4 mono text-xs uppercase tracking-widest" style="color: var(--ink-soft);">{t.register}</span>
+              <span class="col-span-10 sm:col-span-7 font-display text-2xl tracking-tight tier-row-label">{t.label}</span>
+              <span class="col-span-2 sm:col-span-1 mono text-sm text-right tier-row-arrow">→</span>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
   </section>
 
-  <section class="max-w-2xl mx-auto px-6 py-12">
-    <h2 class="font-display text-2xl mb-4">Talk</h2>
-    <p class="measure mb-6">
-      Email is fine. If a 15-minute intro is faster, book one.
-    </p>
+  <section class="max-w-3xl mx-auto px-6 py-16 measure">
+    <h2 class="font-display text-2xl tracking-tight mb-4">Talk</h2>
+    <p class="mb-6">Email is fine. If a 15-minute intro is faster, book one.</p>
     <p class="mono">
       <a href="mailto:hello@cosinehq.co.za">hello@cosinehq.co.za</a>
       <span class="mx-3" style="color: var(--ink-soft);">·</span>
       <a href="/book">Book 15 min →</a>
+      <span class="mx-3" style="color: var(--ink-soft);">·</span>
+      <a href="/#talk">Use the form →</a>
     </p>
   </section>
 </Base>
+
+<style>
+  .tier-row-label { transition: color 200ms ease; }
+  .tier-row:hover .tier-row-label { color: var(--green-deep); }
+  .tier-row-arrow { transition: transform 200ms ease, color 200ms ease; display: inline-block; color: var(--ink-soft); }
+  .tier-row:hover .tier-row-arrow { transform: translateX(4px); color: var(--ink); }
+</style>
