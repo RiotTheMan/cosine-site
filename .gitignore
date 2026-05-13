@@ -31,3 +31,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# claude code agent workspace (worktrees, local settings)
+.claude/

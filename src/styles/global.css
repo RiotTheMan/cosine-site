@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@font-face { font-family: "Fraunces"; font-style: normal; font-weight: 400 900; font-display: swap; src: local("Fraunces"), url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..900&display=swap"); }
-
 :root {
   --paper:    #F7F4EE;
   --paper-2:  #EFEAE0;
